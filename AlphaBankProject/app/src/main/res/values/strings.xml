@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Визитка</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string-array name="card_user_name">
+        <item>Cелфи-мастер</item>
+        <item>Блоггер</item>
+        <item>Визажист</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="card_description">
+        <item>Иван Иванов</item>
+        <item>Петр Петров</item>
+        <item>Егор Егоров</item>
+        <item></item>
+        <item></item>
+        <item></item>
+
+    </string-array>
+
+    <string-array name="card_add_name">
+        <item>Иванова Ольга Алексеевна</item>
+        <item>Иванова Ольга Алексеевна</item>
+        <item>Иванова Ольга Алексеевна</item>
+        <item>Иванова Ольга Алексеевна</item>
+    </string-array>
+
+    <string-array name="card_add_description">
+        <item>Знакомая</item>
+        <item>Это я</item>
+        <item>Кто-то</item>
+        <item>Сын</item>
+    </string-array>
+
+    <string name="my_text"><u>Забыли пароль?</u>.</string>
+
+
+    </resources>
