@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="CardOfMine.UpdateActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_horizontal"
+        android:background="@drawable/toolbar_style">
+
+        <ImageView
+            android:id="@+id/arrow_back"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/arrow_to_back" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="Настройки"
+            android:textAlignment="center"
+            android:textColor="#636363"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/title_input2"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="85dp"
+            android:background="@drawable/radius"
+            android:ems="10"
+            android:hint="Имя"
+            android:inputType="textPersonName"
+            android:paddingLeft="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.442"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/author_input2"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:paddingLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/radius"
+            android:ems="10"
+            android:hint="Фамилия"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_input2" />
+
+        <EditText
+            android:id="@+id/author_input3"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:paddingLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/radius"
+            android:ems="10"
+            android:hint="Отчество"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/author_input2" />
+
+        <EditText
+            android:id="@+id/author_input4"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:paddingLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/radius"
+            android:ems="10"
+            android:hint="Обращение"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/author_input3" />
+
+        <EditText
+            android:id="@+id/author_input5"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:paddingLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/radius"
+            android:ems="10"
+            android:hint="Организация"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/author_input4" />
+
+        <EditText
+            android:id="@+id/author_input6"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:paddingLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/radius"
+            android:ems="10"
+            android:hint="Телефон"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/author_input5" />
+
+        <EditText
+            android:id="@+id/author_input7"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:paddingLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/radius"
+            android:ems="10"
+            android:hint="Адрес эл. почты"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/author_input6" />
+
+        <EditText
+            android:id="@+id/author_input8"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:paddingLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/radius"
+            android:ems="10"
+            android:hint="Адрес"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/author_input7" />
+
+        <EditText
+            android:id="@+id/author_input9"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:paddingLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/radius"
+            android:ems="10"
+            android:hint="Вконтакте"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/author_input8" />
+
+        <EditText
+            android:id="@+id/author_input10"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:paddingLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/radius"
+            android:ems="10"
+            android:hint="Facebook"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/author_input9" />
+
+
+        <Button
+            android:id="@+id/update_button"
+            android:layout_width="140dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="110dp"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="84dp"
+            android:layout_marginEnd="110dp"
+            android:layout_marginRight="110dp"
+            android:text="Сохранить"
+            android:textAllCaps="false"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:background="@drawable/radius_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/author_input9" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
