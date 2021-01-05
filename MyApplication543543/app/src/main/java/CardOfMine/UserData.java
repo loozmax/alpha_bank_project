@@ -2,9 +2,10 @@ package CardOfMine;
 
 public class UserData {
 
-    String id, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userEmail, userVK, userFB;
-
-    public UserData(String id, String userName, String userLastName, String userOtchestvo, String userAppeal, String userOrganisation, String userPhone, String userEmail, String userVK, String userFB) {
+    String delete, id, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userAdres, userEmail, userVK, userFB;
+    boolean needToConfirm;
+    public UserData(String delete, String id, String userName, String userLastName, String userOtchestvo, String userAppeal, String userOrganisation, String userPhone, String userAdres, String userEmail, String userVK, String userFB) {
+        this.delete = delete;
         this.id = id;
         this.userName = userName;
         this.userLastName = userLastName;
@@ -12,15 +13,32 @@ public class UserData {
         this.userAppeal = userAppeal;
         this.userOrganisation = userOrganisation;
         this.userPhone = userPhone;
+        this.userAdres = userAdres;
         this.userEmail = userEmail;
         this.userVK = userVK;
         this.userFB = userFB;
+    }
+
+    public String getDelete() {
+        return delete;
+    }
+
+    public void setDelete(String delete) {
+        this.delete = delete;
     }
 
     public UserData() {}
 
     public String getId() {
         return id;
+    }
+
+    public boolean isNeedToConfirm() {
+        return needToConfirm;
+    }
+
+    public void setNeedToConfirm(boolean needToConfirm) {
+        this.needToConfirm = needToConfirm;
     }
 
     public void setId(String id) {
@@ -97,5 +115,13 @@ public class UserData {
 
     public void setUserFB(String userFB) {
         this.userFB = userFB;
+    }
+
+    public String getUserAdres() {
+        return userAdres;
+    }
+
+    public void setUserAdres(String userAdres) {
+        this.userAdres = userAdres;
     }
 }

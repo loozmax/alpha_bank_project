@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,7 +18,6 @@ public class AddActivityNewCards extends AppCompatActivity {
 
     EditText title_input, author_input, pages_input, appeal_input, organisation_input, phone_input, email_input, adres_input, vk_input, fb_input;
     Button add_button;
-
     DatabaseReference database;
 
     @Override
@@ -52,7 +50,8 @@ public class AddActivityNewCards extends AppCompatActivity {
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userId, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userEmail, userVK, userFB;
+                String delete, userId, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userAdres, userEmail, userVK, userFB;
+                delete = database.push().getKey();
                 userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 userName = title_input.getText().toString();
                 userLastName = author_input.getText().toString();
@@ -60,13 +59,13 @@ public class AddActivityNewCards extends AppCompatActivity {
                 userAppeal = appeal_input.getText().toString();
                 userOrganisation = organisation_input.getText().toString();
                 userPhone = phone_input.getText().toString();
+                userAdres = adres_input.getText().toString();
                 userEmail = email_input.getText().toString();
                 userVK = vk_input.getText().toString();
                 userFB = fb_input.getText().toString();
 
-                UserData userData = new UserData(userId, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userEmail, userVK, userFB);
-                database.child(database.push().getKey()).setValue(userData);
-
+                UserData userData = new UserData(delete, userId, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userAdres, userEmail, userVK, userFB);
+                database.child(delete).setValue(userData);
             }
         });
     }

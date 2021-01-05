@@ -13,6 +13,7 @@ import com.example.myapplication543543.Login;
 import com.example.myapplication543543.R;
 import com.google.firebase.auth.FirebaseAuth;
 
+import CardAddedByMe.CardActivity;
 import CardOfMine.MainActivity;
 
 public class Settings extends AppCompatActivity {
@@ -28,17 +29,17 @@ public class Settings extends AppCompatActivity {
         ImageView arrow = (ImageView) findViewById(R.id.arrow_back);
         arrow.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent myIntent = new Intent(view.getContext(), MainActivity.class);
-                startActivityForResult(myIntent, 0);
+                Intent myIntent = new Intent(view.getContext(), CardActivity.class);
+                startActivity(myIntent);
             }
         });
 
         Button next = (Button) findViewById(R.id.button);
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
                 Intent myIntent = new Intent(view.getContext(), Login.class);
-                startActivityForResult(myIntent, 0);
+                startActivity(myIntent);
             }
         });
     }

@@ -9,13 +9,14 @@
     android:background="@color/white">
 
     <EditText
+        android:text="roseheartbeatj@gmail.com"
         android:id="@+id/email"
         android:layout_width="210dp"
         android:layout_height="38dp"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="44dp"
-        android:background="@drawable/radius"
+        android:background="@drawable/radius2"
         android:ems="10"
         android:hint="ivan@gmail.com"
         android:inputType="textPersonName"
@@ -70,6 +71,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:text="Lineage2"
         android:id="@+id/password"
         android:layout_width="210dp"
         android:layout_height="38dp"
@@ -78,7 +80,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="9dp"
         android:layout_marginRight="9dp"
-        android:background="@drawable/radius"
+        android:background="@drawable/radius2"
         android:ems="10"
         android:hint="****************"
         android:inputType="textPassword"

@@ -34,7 +34,7 @@ public class ActivityFormAddNewCards extends Activity {
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent myIntent = new Intent(view.getContext(), CardActivity.class);
-                startActivityForResult(myIntent, 0);
+                startActivity(myIntent);
             }
         });
 
@@ -55,7 +55,8 @@ public class ActivityFormAddNewCards extends Activity {
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userId, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userEmail, userVK, userFB;
+                String delete, userId, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userAdres, userEmail, userVK, userFB;
+                delete = database.push().getKey();
                 userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 userName = title_input.getText().toString();
                 userLastName = author_input.getText().toString();
@@ -63,11 +64,12 @@ public class ActivityFormAddNewCards extends Activity {
                 userAppeal = appeal_input.getText().toString();
                 userOrganisation = organisation_input.getText().toString();
                 userPhone = phone_input.getText().toString();
+                userAdres = adres_input.getText().toString();
                 userEmail = email_input.getText().toString();
                 userVK = vk_input.getText().toString();
                 userFB = fb_input.getText().toString();
 
-                UserData userData = new UserData(userId, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userEmail, userVK, userFB);
+                UserData userData = new UserData(delete, userId, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userAdres, userEmail, userVK, userFB);
                 database.child(database.push().getKey()).setValue(userData);
             }
         });

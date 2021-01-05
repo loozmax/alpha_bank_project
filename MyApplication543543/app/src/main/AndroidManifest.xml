@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapplication543543">
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -18,11 +19,13 @@
             </intent-filter>
         </activity>
         <activity android:name="CardAddedByMe.CardActivity" />
+        <activity android:name="CardAddedByMe.Favourites" />
         <activity android:name="SettingActivity.Settings" />
         <activity android:name=".RegisterUser" />
         <activity android:name="CardOfMine.MainActivity" />
-        <activity android:name="CardOfMine.UpdateActivity" />
+        <activity android:name="CardOfMine.RedoCard" />
         <activity android:name="CardAddedByMe.ActivityFormAddNewCards" />
+        <activity android:name="CardAddedByMe.AddСutawayByQrCode" />
         <activity android:name="CardOfMine.AddActivityNewCards"
             android:parentActivityName="CardOfMine.MainActivity" />
 

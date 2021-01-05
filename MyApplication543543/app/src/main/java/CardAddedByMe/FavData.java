@@ -1,10 +1,10 @@
 package CardAddedByMe;
 
-public class CardData {
+public class FavData {
 
     String delete, id, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userEmail, userVK, userFB,parentKey;
     boolean needToConfirm;
-    public CardData(String delete, String id, String userName, String userLastName, String userOtchestvo, String userAppeal, String userOrganisation, String userPhone, String userEmail, String userVK, String userFB) {
+    public FavData(String delete, String id, String userName, String userLastName, String userOtchestvo, String userAppeal, String userOrganisation, String userPhone, String userEmail, String userVK, String userFB) {
         this.delete = delete;
         this.id = id;
         this.userName = userName;
@@ -26,26 +26,8 @@ public class CardData {
         this.delete = delete;
     }
 
-    public CardData() {}
-
     public String getId() {
         return id;
-    }
-
-    public boolean isNeedToConfirm() {
-        return needToConfirm;
-    }
-
-    public String getParentKey() {
-        return parentKey;
-    }
-
-    public void setParentKey(String parentKey) {
-        this.parentKey = parentKey;
-    }
-
-    public void setNeedToConfirm(boolean needToConfirm) {
-        this.needToConfirm = needToConfirm;
     }
 
     public void setId(String id) {
@@ -122,5 +104,21 @@ public class CardData {
 
     public void setUserFB(String userFB) {
         this.userFB = userFB;
+    }
+
+    public String getParentKey() {
+        return parentKey;
+    }
+
+    public void setParentKey(String parentKey) {
+        this.parentKey = parentKey;
+    }
+
+    public boolean isNeedToConfirm() {
+        return needToConfirm;
+    }
+
+    public void setNeedToConfirm(boolean needToConfirm) {
+        this.needToConfirm = needToConfirm;
     }
 }
