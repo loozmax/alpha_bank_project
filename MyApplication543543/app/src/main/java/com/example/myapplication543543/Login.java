@@ -11,8 +11,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,6 +28,7 @@ public class Login extends Activity implements View.OnClickListener {
     private TextView register;
     private EditText editTextEmail, editTextPassword;
     private Button signIn;
+    ConstraintLayout coordLayout;
 
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
@@ -44,6 +48,8 @@ public class Login extends Activity implements View.OnClickListener {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         mAuth = FirebaseAuth.getInstance();
 
+        coordLayout = findViewById(R.id.root_element);
+
     }
 
     public void onClick(View v) {
@@ -61,24 +67,6 @@ public class Login extends Activity implements View.OnClickListener {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
-        if (email.isEmpty()) {
-            editTextEmail.setError("Email is required!");
-            editTextEmail.requestFocus();
-            return;
-        }
-
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            editTextEmail.setError("Please enter a valid email!");
-            editTextEmail.requestFocus();
-            return;
-        }
-
-        if (password.isEmpty()) {
-            editTextPassword.setError("Password is required!");
-            editTextPassword.requestFocus();
-            return;
-        }
-
         progressBar.setVisibility(View.VISIBLE);
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -86,12 +74,12 @@ public class Login extends Activity implements View.OnClickListener {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    if (user.isEmailVerified()) {
-                        startActivity(new Intent(Login.this, MainActivity.class));
-                    } else {
-                        user.sendEmailVerification();
-                        Toast.makeText(Login.this, "Check ur email", Toast.LENGTH_SHORT).show();
-                    }
+                    startActivity(new Intent(Login.this, MainActivity.class));
+                    Snackbar.make(
+                            coordLayout,
+                            "Пользователь успешно авторизован",
+                            Snackbar.LENGTH_LONG
+                    ).show();
                 } else {
                     Toast.makeText(Login.this, "Error", Toast.LENGTH_SHORT).show();
                 }

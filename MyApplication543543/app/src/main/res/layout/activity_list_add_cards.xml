@@ -8,37 +8,109 @@
     android:id="@+id/drawer_layout"
     tools:context=".Dashboard">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="12dp"
-        android:gravity="center_horizontal"
-        android:background="@drawable/toolbar_style">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/arrow_back"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/arrow_to_back"/>
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_style"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+            <ImageView
+                android:id="@+id/arrow_back"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/arrow_to_back" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="ВИЗИТКИ"
+                android:textAlignment="center"
+                android:textColor="#636363"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="ВИЗИТКИ"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:textColor="#636363"
-            android:gravity="center_horizontal" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="6"
+                android:background="@drawable/radius_button"
+                android:drawableLeft="@drawable/qr_code_white"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Сканировать новую карточку"
+                android:textColor="#fff"
+                android:textSize="15dp" />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:layout_weight="3"
+                android:background="@drawable/radius_button"
+                android:drawableLeft="@drawable/heart_white"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Избранное"
+                android:textColor="#fff"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+            app:layout_constraintVertical_bias="0.0">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:id="@+id/button_new_form"
+            android:layout_width="160px"
+            android:layout_height="160px"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/red_add_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/rv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    <RelativeLayout-->
+    <!--    <RelativeLayout-->
 <!--        android:layout_width="300dp"-->
 <!--        android:layout_height="match_parent"-->
 <!--        android:layout_gravity="start"-->
@@ -46,71 +118,6 @@
 <!--        <include layout="@layout/main_nav_drawer" />-->
 <!--    </RelativeLayout>-->
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="123dp"
-        android:padding="10dp">
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-        <TextView
-            android:layout_marginTop="60dp"
-            android:textColor="#fff"
-            android:id="@+id/textView4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:background="@drawable/radius_button"
-            android:text="Сканировать новую карточку"
-            android:gravity="center"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp"
-            android:paddingRight="4dp"
-            android:paddingLeft="10dp"
-            android:layout_marginLeft="8dp"
-            android:textSize="15dp"
-            android:drawableLeft="@drawable/qr_code_white"
-            android:layout_marginRight="8dp"/>
-
-
-        <TextView
-            android:id="@+id/favourites"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_weight="3"
-            android:background="@drawable/radius_button"
-            android:text="Избранное"
-            android:textColor="#fff"
-            android:paddingRight="10dp"
-            android:layout_marginRight="10dp"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp"
-            android:drawableLeft="@drawable/heart_white"
-            android:paddingLeft="10dp"
-            android:gravity="center"
-            android:textSize="15dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/button_new_form"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/red_add_icon"
-            android:layout_marginTop="700dp"
-            android:layout_marginLeft="190dp" />
-
-    </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
 
 

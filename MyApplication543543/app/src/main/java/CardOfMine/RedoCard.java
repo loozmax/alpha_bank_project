@@ -75,8 +75,8 @@ public class RedoCard extends AppCompatActivity {
         vk = intent.getStringExtra("vk");
         fb = intent.getStringExtra("fb");
 
-        title_input.setText(title);
-        author_input.setText(author);
+        title_input.setText(author);
+        author_input.setText(title);
         pages_input.setText(pages);
         appeal_input.setText(appeal);
         organisation_input.setText(organisation);
@@ -103,8 +103,11 @@ public class RedoCard extends AppCompatActivity {
                 uVk = vk_input.getText().toString();
                 uFb = fb_input.getText().toString();
 
-                UserData userData = new UserData(delete, id, uAuthor, uTitle, uPages, uAppeal, uOrganisation, uPhone, uAdres, uEmail, uVk, uFb);
+                UserData userData = new UserData(null, delete, id, uAuthor, uTitle, uPages, uAppeal, uOrganisation, uPhone, uAdres, uEmail, uVk, uFb);
                 databaseReference.setValue(userData);
+
+                Intent intent = new Intent(RedoCard.this, MainActivity.class);
+                v.getContext().startActivity(intent);
             }
         });
 

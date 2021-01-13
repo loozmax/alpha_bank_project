@@ -5,7 +5,7 @@
     android:id="@+id/rootLayoyt"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/radius"
+    android:background="@drawable/radius2"
     android:padding="1dp">
 
     <ImageView
@@ -24,6 +24,8 @@
         android:id="@+id/imageView"
         android:layout_width="120dp"
         android:layout_height="120dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="251dp"
         android:layout_marginRight="251dp"
@@ -35,39 +37,34 @@
         app:layout_constraintVertical_bias="0.333"
         app:srcCompat="@drawable/ic_launcher_background" />
 
+
+
     <TextView
         android:id="@+id/myText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="82dp"
         android:text="Description"
         android:textColor="#000000"
         android:textSize="26sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/myText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="101dp"
-        android:layout_marginLeft="101dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="1dp"
         android:text="Title"
         android:textColor="#000000"
         android:textSize="19sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/myText2" />
 
     <ImageView
         android:id="@+id/qr"

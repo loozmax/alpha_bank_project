@@ -1,6 +1,5 @@
 package CardOfMine;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -15,19 +14,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication543543.R;
 import com.google.firebase.database.DatabaseReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> {
 
     private ArrayList<UserData> userData;
     private UserActionInterface userActionInterface;
     private Context context;
-    DatabaseReference getRef;
 
     public UserAdapter(Context context, ArrayList<UserData> userData, UserActionInterface userActionInterface) {
         this.context = context;
-        this.userActionInterface=userActionInterface;
+        this.userActionInterface = userActionInterface;
         this.userData = userData;
     }
 
@@ -41,21 +41,27 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final UserData userData = this.userData.get(position);
+        Picasso.get()
+                .load(userData.getmImageUrl())
+                .fit()
+                .centerCrop()
+                .into(holder.avatar);
 
         holder.tvName.setText(userData.getUserName());
         holder.tvDescription.setText(userData.getUserLastName());
         holder.qrImageView.setOnClickListener((view)->{
             if(userActionInterface!=null)
                 userActionInterface.showQrCode(userData);
-            });
+        });
         holder.rootLayout.setOnClickListener((view)->{
             if(userActionInterface!=null)
                 userActionInterface.showUsersForshareCutaway(userData);
-                        });
+        });
         holder.items.setOnClickListener((view)->{
             if(userActionInterface!=null)
                 userActionInterface.showItems(userData);
         });
+
 
         holder.redo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +92,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tvName, tvDescription;
-        ImageView qrImageView,items, redo, delete;
+        ImageView qrImageView, items, redo, delete, avatar;
         ConstraintLayout rootLayout;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -98,8 +104,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
             tvDescription = itemView.findViewById(R.id.myText1);
             redo = itemView.findViewById(R.id.redo);
             delete = itemView.findViewById(R.id.deleteThisCard);
+            avatar = itemView.findViewById(R.id.imageView);
         }
     }
+
     interface UserActionInterface{
         void showQrCode(UserData userData);
         void showUsersForshareCutaway(UserData userData);

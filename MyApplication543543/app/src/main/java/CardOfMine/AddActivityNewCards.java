@@ -1,24 +1,45 @@
 package CardOfMine;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication543543.R;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 public class AddActivityNewCards extends AppCompatActivity {
 
+    private static final int PICK_IMAGE_REQUEST = 1;
     EditText title_input, author_input, pages_input, appeal_input, organisation_input, phone_input, email_input, adres_input, vk_input, fb_input;
     Button add_button;
     DatabaseReference database;
+    DatabaseReference mDatabaseRef;
+    StorageReference storageReference;
+    ImageView uploadImgs;
+    private Uri mImageUri;
+    private StorageTask mUploadTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +50,12 @@ public class AddActivityNewCards extends AppCompatActivity {
         arrow.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent myIntent = new Intent(view.getContext(), MainActivity.class);
-                startActivityForResult(myIntent, 0);
+                startActivity(myIntent);
             }
         });
 
+        storageReference = FirebaseStorage.getInstance().getReference();
+        uploadImgs = findViewById(R.id.uploadImgs);
         title_input = findViewById(R.id.author_input);
         author_input = findViewById(R.id.title_input);
         pages_input = findViewById(R.id.pages_input);
@@ -64,9 +87,81 @@ public class AddActivityNewCards extends AppCompatActivity {
                 userVK = vk_input.getText().toString();
                 userFB = fb_input.getText().toString();
 
-                UserData userData = new UserData(delete, userId, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userAdres, userEmail, userVK, userFB);
+                UserData userData = new UserData(null, delete, userId, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userAdres, userEmail, userVK, userFB);
                 database.child(delete).setValue(userData);
+
+                if (mUploadTask != null && mUploadTask.isInProgress()) {
+                    //TODO
+                } else {
+                    uploadFile();
+                }
+
+                Intent intent = new Intent(AddActivityNewCards.this, MainActivity.class);
+                v.getContext().startActivity(intent);
             }
         });
+
+        storageReference = FirebaseStorage.getInstance().getReference("uploads");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
+
+        uploadImgs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFileChooser();
+            }
+        });
+    }
+
+    private void openFileChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            mImageUri = data.getData();
+            Picasso.get().load(mImageUri).into(uploadImgs);
+        }
+    }
+
+    private String getFileExtension(Uri uri) {
+        ContentResolver cR = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
+    }
+
+    private void uploadFile() {
+        if (mImageUri != null)
+        {
+            storageReference.putFile(mImageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>()
+            {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception
+                {
+                    if (!task.isSuccessful())
+                    {
+                        throw task.getException();
+                    }
+                    return storageReference.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>()
+            {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task)
+                {
+                    if (task.isSuccessful())
+                    {
+                        Uri downloadUri = task.getResult();
+                        UserData upload = new UserData(downloadUri.toString(), null, null, null, null, null, null, null, null, null, null, null, null);
+                        mDatabaseRef.push().setValue(upload);
+                    }
+                }
+            });
+        }
     }
 }

@@ -2,6 +2,8 @@ package com.example.myapplication543543;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -12,13 +14,19 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import CardOfMine.MainActivity;
 
@@ -28,13 +36,13 @@ public class RegisterUser extends Activity implements View.OnClickListener {
     private EditText editTextFullName, editTextAge, editTextEmail, editTextPassword, editTextPhone;
     private ProgressBar progressBar;
     Button registerUser;
+    ConstraintLayout coordLayout;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration);
 
         mAuth = FirebaseAuth.getInstance();
-
         editTextAge = (EditText) findViewById(R.id.age);
         editTextEmail = (EditText) findViewById(R.id.email);
         editTextFullName = (EditText) findViewById(R.id.fullName);
@@ -42,6 +50,7 @@ public class RegisterUser extends Activity implements View.OnClickListener {
         editTextPhone = (EditText) findViewById(R.id.phone);
         registerUser = (Button) findViewById(R.id.registerUser);
         registerUser.setOnClickListener(this);
+        coordLayout = findViewById(R.id.root_element);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
@@ -68,41 +77,6 @@ public class RegisterUser extends Activity implements View.OnClickListener {
         String password = editTextPassword.getText().toString().trim();
         String phone = editTextPhone.getText().toString().trim();
 
-        if (fullName.isEmpty()) {
-            editTextFullName.setError("Full name is required");
-            editTextFullName.requestFocus();
-            return;
-        }
-
-        if (age.isEmpty()) {
-            editTextAge.setError("Age is required");
-            editTextAge.requestFocus();
-            return;
-        }
-
-        if (email.isEmpty()) {
-            editTextEmail.setError("Email is required");
-            editTextEmail.requestFocus();
-            return;
-        }
-
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            editTextEmail.setError("Please provide valid email");
-            editTextEmail.requestFocus();
-            return;
-        }
-
-        if (password.isEmpty()) {
-            editTextPassword.setError("Password is required");
-            editTextPassword.requestFocus();
-            return;
-        }
-
-        if (password.length() < 6) {
-            editTextPassword.setError("Too weak password!");
-            editTextPassword.requestFocus();
-            return;
-        }
 
         progressBar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -117,19 +91,28 @@ public class RegisterUser extends Activity implements View.OnClickListener {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(RegisterUser.this, "Successful", Toast.LENGTH_SHORT).show();
+                                        Snackbar.make(
+                                                coordLayout,
+                                                "Пользователь успешно зарегистрирован",
+                                                Snackbar.LENGTH_LONG
+                                        ).show();
                                         progressBar.setVisibility(View.GONE);
-                                    } else {
-                                        Toast.makeText(RegisterUser.this, "Failed", Toast.LENGTH_SHORT).show();
-                                        progressBar.setVisibility(View.GONE);
-                                    }
+                                        Intent myIntent = new Intent(RegisterUser.this, Login.class);
+                                        startActivity(myIntent);
+
+                                    } else progressBar.setVisibility(View.GONE);
                                 }
                             });
                         } else {
-                            Toast.makeText(RegisterUser.this, "Failed", Toast.LENGTH_SHORT).show();
+                            Snackbar.make(
+                                    coordLayout,
+                                    "Ошибка при регистрации. Проверьте правильность введенных данных",
+                                    Snackbar.LENGTH_LONG
+                            ).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     }
                 });
+
     }
 }

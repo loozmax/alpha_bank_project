@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapplication543543">
+
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -10,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication543543">
-
+        <activity android:name="CardOfMine.activity_edit"></activity>
+        <activity android:name="CardOfMine.ProfileRedo" />
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,16 +23,15 @@
             </intent-filter>
         </activity>
         <activity android:name="CardAddedByMe.CardActivity" />
-        <activity android:name="CardAddedByMe.Favourites" />
         <activity android:name="SettingActivity.Settings" />
         <activity android:name=".RegisterUser" />
         <activity android:name="CardOfMine.MainActivity" />
         <activity android:name="CardOfMine.RedoCard" />
         <activity android:name="CardAddedByMe.ActivityFormAddNewCards" />
         <activity android:name="CardAddedByMe.AddСutawayByQrCode" />
-        <activity android:name="CardOfMine.AddActivityNewCards"
+        <activity
+            android:name="CardOfMine.AddActivityNewCards"
             android:parentActivityName="CardOfMine.MainActivity" />
-
     </application>
 
 </manifest>

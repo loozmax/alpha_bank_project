@@ -62,7 +62,7 @@
         android:layout_width="1020px"
         android:layout_height="155px"
         android:layout_marginTop="216dp"
-        android:background='@drawable/radius2'
+        android:background='@drawable/radius'
         android:ems="10"
         android:hint="Имя"
         android:inputType="textPersonName"
@@ -76,7 +76,7 @@
         android:layout_width="1020px"
         android:layout_height="155px"
         android:layout_marginTop="8dp"
-        android:background='@drawable/radius2'
+        android:background='@drawable/radius'
         android:ems="10"
         android:hint="Фамилия"
         android:inputType="textPersonName"
@@ -90,7 +90,7 @@
         android:layout_width="1020px"
         android:layout_height="155px"
         android:layout_marginTop="8dp"
-        android:background='@drawable/radius2'
+        android:background='@drawable/radius'
         android:ems="10"
         android:hint="Отчество"
         android:inputType="textPersonName"
@@ -104,7 +104,7 @@
         android:layout_width="1020px"
         android:layout_height="155px"
         android:layout_marginTop="8dp"
-        android:background='@drawable/radius2'
+        android:background='@drawable/radius'
         android:ems="10"
         android:hint="Обращение"
         android:inputType="textPersonName"
@@ -118,7 +118,7 @@
         android:layout_width="1020px"
         android:layout_height="155px"
         android:layout_marginTop="8dp"
-        android:background='@drawable/radius2'
+        android:background='@drawable/radius'
         android:ems="10"
         android:hint="Организация"
         android:inputType="textPersonName"
@@ -132,7 +132,7 @@
         android:layout_width="1020px"
         android:layout_height="155px"
         android:layout_marginTop="8dp"
-        android:background='@drawable/radius2'
+        android:background='@drawable/radius'
         android:ems="10"
         android:hint="Телефон"
         android:inputType="number"
@@ -146,7 +146,7 @@
         android:layout_width="1020px"
         android:layout_height="155px"
         android:layout_marginTop="8dp"
-        android:background='@drawable/radius2'
+        android:background='@drawable/radius'
         android:ems="10"
         android:hint="Адрес эл. почты"
         android:inputType="textPersonName"
@@ -160,7 +160,7 @@
         android:layout_width="1020px"
         android:layout_height="155px"
         android:layout_marginTop="8dp"
-        android:background='@drawable/radius2'
+        android:background='@drawable/radius'
         android:ems="10"
         android:hint="Адрес"
         android:inputType="textPersonName"
@@ -175,7 +175,7 @@
         android:layout_height="155px"
         android:layout_marginTop="8dp"
         android:layout_marginRight="58dp"
-        android:background='@drawable/radius2'
+        android:background='@drawable/radius'
         android:ems="10"
         android:hint="Facebook"
         android:inputType="textPersonName"
@@ -188,7 +188,7 @@
         android:layout_width="1020px"
         android:layout_height="155px"
         android:layout_marginTop="8dp"
-        android:background='@drawable/radius2'
+        android:background='@drawable/radius'
         android:ems="10"
         android:hint="Вконтакте"
         android:inputType="textPersonName"
@@ -283,15 +283,21 @@
         app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName11"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/imageButton"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="174dp"
+        android:layout_marginLeft="174dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="197dp"
+        android:layout_marginRight="197dp"
+        android:layout_marginBottom="78dp"
+        android:src="@drawable/button_photo"
+        app:layout_constraintBottom_toTopOf="@+id/nameInput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:srcCompat="@drawable/button_photo" />
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,15 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/root_element">
 
     <LinearLayout
+        android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="12dp"
+        android:background="@drawable/toolbar_style"
         android:gravity="center_horizontal"
-        android:background="@drawable/toolbar_style">
+        android:orientation="horizontal"
+        android:padding="12dp">
 
         <ImageView
             android:id="@+id/arrow_back"
@@ -36,81 +38,81 @@
     </LinearLayout>
 
     <EditText
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/radius2"
         android:id="@+id/fullName"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:paddingLeft="20dp"
-        android:layout_marginTop="98dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/radius2"
         android:ems="10"
         android:hint="Имя"
         android:inputType="text"
+        android:paddingLeft="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/radius2"
         android:id="@+id/age"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:paddingLeft="20dp"
-        android:layout_marginTop="41dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/radius2"
         android:ems="10"
         android:hint="Возраст"
         android:inputType="number"
+        android:paddingLeft="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fullName" />
 
     <EditText
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/radius2"
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:paddingLeft="20dp"
-        android:layout_marginTop="41dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/radius2"
         android:ems="10"
         android:hint="Электронная почта"
         android:inputType="textEmailAddress"
+        android:paddingLeft="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/age" />
 
     <EditText
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/radius2"
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:paddingLeft="20dp"
-        android:layout_marginTop="41dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/radius2"
         android:ems="10"
         android:hint="Пароль"
         android:inputType="textPassword"
+        android:paddingLeft="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <EditText
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/radius2"
         android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:paddingLeft="20dp"
-        android:layout_marginTop="41dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/radius2"
         android:ems="10"
         android:hint="Телефон"
         android:inputType="number"
+        android:paddingLeft="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
@@ -140,6 +142,7 @@
         android:visibility="gone"
         android:layout_centerInParent="true"
         tools:ignore="MissingConstraints" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

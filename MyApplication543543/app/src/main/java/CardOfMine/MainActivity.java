@@ -18,11 +18,11 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Point;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.Display;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -33,9 +33,11 @@ import CardAddedByMe.CardActivity;
 import com.example.myapplication543543.R;
 import SettingActivity.Settings;
 import SettingActivity.SpacesItemDecoration;
+import de.hdodenhof.circleimageview.CircleImageView;
 import utils.QRCodeEncoder;
 
 import com.example.myapplication543543.User;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,24 +45,33 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
 import com.google.gson.Gson;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements UserAdapter.UserActionInterface, UserListAdapter.UserListActionInterface {
+public class MainActivity extends AppCompatActivity implements
+        UserAdapter.UserActionInterface, UserListAdapter.UserListActionInterface {
 
     Context context = this;
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
+    FirebaseAuth fAuth;
+    StorageReference storageReference;
+    CircleImageView userImg;
+
     DrawerLayout drawerLayout;
     RecyclerView recyclerView,rvUsers;
-    ImageView add_button, redo;
+    ImageView add_button;
     ConstraintLayout usersLayout;
     TextView tvCutawayDescription;
-
 
     private ArrayList<UserData> userData;
     private ArrayList<User> users;
@@ -68,6 +79,8 @@ public class MainActivity extends AppCompatActivity implements UserAdapter.UserA
     private UserListAdapter userListAdapter;
     DatabaseReference dRefUserData;
     DatabaseReference dRefCardData;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,11 +92,23 @@ public class MainActivity extends AppCompatActivity implements UserAdapter.UserA
         tvCutawayDescription= findViewById(R.id.tvCutawayDescription);
         rvUsers = findViewById(R.id.rvUsersList);
         rvUsers.setLayoutManager(new GridLayoutManager(this,4));
-
+        storageReference = FirebaseStorage.getInstance().getReference();
         recyclerView.addItemDecoration(new SpacesItemDecoration(50));
 
+        fAuth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
+
+        userImg = findViewById(R.id.uploadImgUser);
+
+        userImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ProfileRedo.class);
+                startActivity(intent);
+            }
+        });
+
         users = new ArrayList<>();
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -106,10 +131,7 @@ public class MainActivity extends AppCompatActivity implements UserAdapter.UserA
 
             }
         });
-
-        if (user != null) {
-            userID = user.getUid();
-        }
+        userID = user.getUid();
 
         final TextView fullNameTextView = (TextView) findViewById(R.id.nameActivity);
         final TextView phoneTextView = (TextView) findViewById(R.id.phone);
@@ -132,6 +154,13 @@ public class MainActivity extends AppCompatActivity implements UserAdapter.UserA
             }
         });
 
+        StorageReference profileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(userImg);
+            }
+        });
 
         TextView next = (TextView) findViewById(R.id.settings);
         next.setOnClickListener(new View.OnClickListener() {
@@ -185,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements UserAdapter.UserA
                         userData.add(uData);
                     }
                 }
-                userAdapter = new UserAdapter(context, userData,MainActivity.this);
+                userAdapter = new UserAdapter(context, userData, MainActivity.this);
                 recyclerView.setAdapter(userAdapter);
             }
 
@@ -199,7 +228,6 @@ public class MainActivity extends AppCompatActivity implements UserAdapter.UserA
         dRefUserData = FirebaseDatabase.getInstance().getReference().child("User Data");
         dRefUserData.addListenerForSingleValueEvent(valueEventListener);
     }
-
 
     private Bitmap generateQRCode(String encryptData) {
         // here encryptData data will be your data
@@ -244,7 +272,7 @@ public class MainActivity extends AppCompatActivity implements UserAdapter.UserA
         image.setImageBitmap(generateQRCode(new Gson().toJson(userData)));
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(this).
-                        setMessage("Отсканируйте QR-код, чтобы добавить визитку").
+                        setMessage("Отсканируйте QR-код чтобы добавить визитку").
                         setPositiveButton("Закрыть", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -261,6 +289,7 @@ public class MainActivity extends AppCompatActivity implements UserAdapter.UserA
         tvCutawayDescription.setText(userData.getUserName());
         tvCutawayDescription.setText("Поделиться визиткой '"+userData.getUserName()+"' c пользователем:");
         usersLayout.setVisibility(View.VISIBLE);
+
     }
 
     @Override
@@ -270,7 +299,7 @@ public class MainActivity extends AppCompatActivity implements UserAdapter.UserA
         builder.setTitle("Выберите действие");
 
         // add a list
-        String[] animals = {"Добавить в контакты", "Посмотреть визитку"};
+        String[] animals = {"Добавить в контакты"};
         builder.setItems(animals, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -282,9 +311,12 @@ public class MainActivity extends AppCompatActivity implements UserAdapter.UserA
                         intent .putExtra(ContactsContract.Intents.Insert.NAME, userData.userName);
                         startActivity(intent);
                     } break;
+
                 }
             }
         });
+
+        // create and show the alert dialog
         AlertDialog dialog = builder.create();
         dialog.show();
 

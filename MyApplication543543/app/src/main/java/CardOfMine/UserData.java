@@ -2,9 +2,10 @@ package CardOfMine;
 
 public class UserData {
 
-    String delete, id, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userAdres, userEmail, userVK, userFB;
+    String mImageUrl, delete, id, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userAdres, userEmail, userVK, userFB;
     boolean needToConfirm;
-    public UserData(String delete, String id, String userName, String userLastName, String userOtchestvo, String userAppeal, String userOrganisation, String userPhone, String userAdres, String userEmail, String userVK, String userFB) {
+    public UserData(String mImageUrl, String delete, String id, String userName, String userLastName, String userOtchestvo, String userAppeal, String userOrganisation, String userPhone, String userAdres, String userEmail, String userVK, String userFB) {
+        this.mImageUrl = mImageUrl;
         this.delete = delete;
         this.id = id;
         this.userName = userName;
@@ -17,6 +18,14 @@ public class UserData {
         this.userEmail = userEmail;
         this.userVK = userVK;
         this.userFB = userFB;
+    }
+
+    public String getmImageUrl() {
+        return mImageUrl;
+    }
+
+    public void setmImageUrl(String mImageUrl) {
+        this.mImageUrl = mImageUrl;
     }
 
     public String getDelete() {

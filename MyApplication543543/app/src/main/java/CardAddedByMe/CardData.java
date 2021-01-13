@@ -2,10 +2,9 @@ package CardAddedByMe;
 
 public class CardData {
 
-    String delete, id, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userEmail, userVK, userFB,parentKey;
-    boolean needToConfirm;
-    public CardData(String delete, String id, String userName, String userLastName, String userOtchestvo, String userAppeal, String userOrganisation, String userPhone, String userEmail, String userVK, String userFB) {
-        this.delete = delete;
+    String id, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userEmail,userAddress, userVK, userFB,parentKey;
+    boolean needToConfirm,isFavorite;
+    public CardData(String id, String userName, String userLastName, String userOtchestvo, String userAppeal, String userOrganisation, String userPhone, String userEmail,String userAddress, String userVK, String userFB) {
         this.id = id;
         this.userName = userName;
         this.userLastName = userLastName;
@@ -16,17 +15,18 @@ public class CardData {
         this.userEmail = userEmail;
         this.userVK = userVK;
         this.userFB = userFB;
-    }
-
-    public String getDelete() {
-        return delete;
-    }
-
-    public void setDelete(String delete) {
-        this.delete = delete;
+        this.userAddress=userAddress;
     }
 
     public CardData() {}
+
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
 
     public String getId() {
         return id;
@@ -118,6 +118,14 @@ public class CardData {
 
     public String getUserFB() {
         return userFB;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 
     public void setUserFB(String userFB) {

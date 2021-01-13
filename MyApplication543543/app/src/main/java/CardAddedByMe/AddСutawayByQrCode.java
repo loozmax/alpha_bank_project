@@ -62,13 +62,13 @@ public class AddСutawayByQrCode extends AppCompatActivity implements ZXingScann
                 }else {
                     mScannerView.setResultHandler(this);
                     mScannerView.startCamera();
-                    Toast.makeText(AddСutawayByQrCode.this,"Неверный формат QR-кода",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddСutawayByQrCode.this,"Не верный формат QR-кода",Toast.LENGTH_SHORT).show();
                 }
 
             }catch (JsonSyntaxException e){
                 mScannerView.setResultHandler(this);
                 mScannerView.startCamera();
-                Toast.makeText(AddСutawayByQrCode.this,"Неверный формат QR-кода",Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddСutawayByQrCode.this,"Не верный формат QR-кода",Toast.LENGTH_SHORT).show();
             }
 
 
