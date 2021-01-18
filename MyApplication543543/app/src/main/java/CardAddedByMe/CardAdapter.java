@@ -1,6 +1,7 @@
 package CardAddedByMe;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication543543.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import CardOfMine.UserData;
@@ -48,6 +50,11 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull CardAdapter.MyViewHolder holder, int position) {
         CardData userData = this.cardData.get(position);
+        Picasso.get()
+                .load(userData.getmImageUrl())
+                .fit()
+                .centerCrop()
+                .into(holder.avatar);
 
         holder.tvName.setText(userData.getUserName());
         holder.tvDescription.setText(userData.getUserLastName());
@@ -113,6 +120,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
         ConstraintLayout infolayout;
         EditText organization,phoneNumb,emailAdrr,addrrr;
         Button vk_profile,fcb_profile;
+        ImageView avatar;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.title);
@@ -130,6 +138,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
             addrrr= itemView.findViewById(R.id.addrrr);
             vk_profile= itemView.findViewById(R.id.vk_profile);
             fcb_profile= itemView.findViewById(R.id.fcb_profile);
+            avatar = itemView.findViewById(R.id.imageCard);
 
         }
     }

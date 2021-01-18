@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import com.example.myapplication543543.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -108,12 +109,11 @@ public class ActivityFormAddNewCards extends Activity {
                 openFileChooser();
             }
         });
-
     }
 
     private void openFileChooser() {
         Intent intent = new Intent();
-        intent.setType("image2/*");
+        intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
@@ -135,19 +135,26 @@ public class ActivityFormAddNewCards extends Activity {
     }
 
     private void uploadFile() {
-        if (mImageUri != null) {
-            storageReference.putFile(mImageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+        if (mImageUri != null)
+        {
+            storageReference.putFile(mImageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>()
+            {
                 @Override
-                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                    if (!task.isSuccessful()) {
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception
+                {
+                    if (!task.isSuccessful())
+                    {
                         throw task.getException();
                     }
                     return storageReference.getDownloadUrl();
                 }
-            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            }).addOnCompleteListener(new OnCompleteListener<Uri>()
+            {
                 @Override
-                public void onComplete(@NonNull Task<Uri> task) {
-                    if (task.isSuccessful()) {
+                public void onComplete(@NonNull Task<Uri> task)
+                {
+                    if (task.isSuccessful())
+                    {
                         Uri downloadUri = task.getResult();
                         UserData upload = new UserData(downloadUri.toString(), null, null, null, null, null, null, null, null, null, null, null, null);
                         mDatabaseRef.push().setValue(upload);

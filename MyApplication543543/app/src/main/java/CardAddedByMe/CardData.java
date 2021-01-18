@@ -2,10 +2,11 @@ package CardAddedByMe;
 
 public class CardData {
 
-    String id, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userEmail,userAddress, userVK, userFB,parentKey;
+    String id, mImageUrl, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userEmail,userAddress, userVK, userFB,parentKey;
     boolean needToConfirm,isFavorite;
-    public CardData(String id, String userName, String userLastName, String userOtchestvo, String userAppeal, String userOrganisation, String userPhone, String userEmail,String userAddress, String userVK, String userFB) {
+    public CardData(String id, String mImageUrl, String userName, String userLastName, String userOtchestvo, String userAppeal, String userOrganisation, String userPhone, String userEmail,String userAddress, String userVK, String userFB) {
         this.id = id;
+        this.mImageUrl = mImageUrl;
         this.userName = userName;
         this.userLastName = userLastName;
         this.userOtchestvo = userOtchestvo;
@@ -19,6 +20,14 @@ public class CardData {
     }
 
     public CardData() {}
+
+    public String getmImageUrl() {
+        return mImageUrl;
+    }
+
+    public void setmImageUrl(String mImageUrl) {
+        this.mImageUrl = mImageUrl;
+    }
 
     public String getUserAddress() {
         return userAddress;
