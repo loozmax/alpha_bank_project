@@ -54,6 +54,7 @@ public class CardActivity extends AppCompatActivity implements CardAdapter.Confi
     private CardAdapter customAdapter;
     DatabaseReference dRef;
     private static final int MY_CAMERA_REQUEST_CODE = 100;
+    DatabaseReference database;
 
 
 
@@ -83,15 +84,15 @@ public class CardActivity extends AppCompatActivity implements CardAdapter.Confi
         showJustFavoriteCutaways= findViewById(R.id.textView5);
         showJustFavoriteCutaways.setOnClickListener((v -> {
             customAdapter.setShowJustFavorite(!customAdapter.isShowJustFavorite());
-           if(customAdapter.isShowJustFavorite()){
-               ArrayList<CardData> filteredCardList= new ArrayList<>();
-               for(CardData cardData:cardDataArrayList){
-                   if(cardData.isFavorite()) filteredCardList.add(cardData);
-               }
-               customAdapter.setCardData(filteredCardList);
-           }else {
-               customAdapter.setCardData(cardDataArrayList);
-           }
+            if(customAdapter.isShowJustFavorite()){
+                ArrayList<CardData> filteredCardList= new ArrayList<>();
+                for(CardData cardData:cardDataArrayList){
+                    if(cardData.isFavorite()) filteredCardList.add(cardData);
+                }
+                customAdapter.setCardData(filteredCardList);
+            }else {
+                customAdapter.setCardData(cardDataArrayList);
+            }
         }));
 
         ImageView arrow = (ImageView) findViewById(R.id.arrow_back);
@@ -172,14 +173,14 @@ public class CardActivity extends AppCompatActivity implements CardAdapter.Confi
 
     @Override
     public void deleteCardData(CardData cardData,int position) {
-            dRef.child(cardData.parentKey).removeValue(new DatabaseReference.CompletionListener() {
-                @Override
-                public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+        dRef.child(cardData.parentKey).removeValue(new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
 
-                    customAdapter.removeItem(position);
-                    Toast.makeText(CardActivity.this,"Success!",Toast.LENGTH_SHORT);
-                }
-            });
+                customAdapter.removeItem(position);
+                Toast.makeText(CardActivity.this,"Success!",Toast.LENGTH_SHORT);
+            }
+        });
     }
     @Override
     public void showItems(CardData cardData,int position) {
@@ -188,7 +189,7 @@ public class CardActivity extends AppCompatActivity implements CardAdapter.Confi
         builder.setTitle("Выберите действие");
 
         // add a list
-        String[] animals = {"Добавить в контакты",(cardData.isFavorite)?"Убрать из избранного":"Добавить в избранное"};
+        String[] animals = {"Добавить в контакты",(cardData.isFavorite)?"Убрать из избранного":"Добавить в избранное", "Удалить"};
         builder.setItems(animals, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -212,8 +213,21 @@ public class CardActivity extends AppCompatActivity implements CardAdapter.Confi
                                     }
                                     customAdapter.setCardData(filteredCardList);
                                 }
-
                                 customAdapter.notifyItemChanged(position);
+                                Toast.makeText(CardActivity.this,"Success!",Toast.LENGTH_SHORT);
+                            }
+                        });
+                    } break;
+
+                    case 2: {
+//                        database = FirebaseDatabase.getInstance().getReference("Card Data");
+//                        database.child().removeValue();
+//                        Intent intent = new Intent(CardActivity.this, CardActivity.class);
+//                        startActivity(intent);
+                        dRef.child(cardData.parentKey).removeValue(new DatabaseReference.CompletionListener() {
+                            @Override
+                            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                                customAdapter.removeItem(position);
                                 Toast.makeText(CardActivity.this,"Success!",Toast.LENGTH_SHORT);
                             }
                         });

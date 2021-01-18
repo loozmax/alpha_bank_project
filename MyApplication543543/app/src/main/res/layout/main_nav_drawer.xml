@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorBackground">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_marginLeft="10dp"
@@ -13,9 +14,8 @@
         android:id="@+id/uploadImgUser"
         android:layout_width="100dp"
         android:layout_height="80dp"
-        android:src="@drawable/trump"
-        app:civ_border_color="#FF000000"
-        app:civ_border_width="2dp" />
+        android:src="@drawable/user"
+        app:civ_border_color="#FF000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -23,7 +23,7 @@
         android:gravity="left"
         android:text="Иван Иванов"
         android:layout_marginLeft="20dp"
-        android:textColor="#636363"
+        android:textColor="@color/textColorPrimary"
         android:textSize="20sp"
         android:textStyle="bold"
         android:id="@+id/nameActivity"/>
@@ -35,15 +35,14 @@
         android:gravity="left"
         android:text="phone number"
         android:layout_marginLeft="20dp"
-        android:textColor="#636363"
+        android:textColor="@color/textColorPrimary"
         android:textSize="15sp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/white" />
+        android:layout_marginBottom="16dp" />
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,7 +54,7 @@
             android:layout_width="80px"
             android:layout_height="80px"
             android:layout_marginLeft="15dp"
-            android:src="@drawable/user_icon"/>
+            android:src="?attr/user"/>
 
         <TextView
             android:id="@+id/home"
@@ -67,7 +66,7 @@
             android:text="Мои визитки"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:textColor="#000"/>
+            android:textColor="@color/textColorPrimary"/>
 
 
     </LinearLayout>
@@ -82,11 +81,11 @@
             android:layout_width="80px"
             android:layout_height="80px"
             android:layout_marginLeft="15dp"
-            android:src="@drawable/add_icon"/>
+            android:src="?attr/add"/>
 
         <TextView
             android:id="@+id/add_new_card"
-            android:textColor="#000"
+            android:textColor="@color/textColorPrimary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -109,7 +108,7 @@
             android:layout_marginLeft="15dp"
             android:layout_width="80px"
             android:layout_height="80px"
-            android:src="@drawable/settings_icon"/>
+            android:src="?attr/settings"/>
 
         <TextView
             android:id="@+id/settings"
@@ -121,7 +120,7 @@
             android:layout_marginLeft="27dp"
             android:textStyle="bold"
             android:textSize="18dp"
-            android:textColor="#000"
+            android:textColor="@color/textColorPrimary"
  />
 
 

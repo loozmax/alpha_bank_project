@@ -12,5 +12,18 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <item name="actionSearchIcon">@drawable/night_theme</item>
+        <item name="actionAcceptIcon">@drawable/info</item>
+        <item name="actionRefreshIcon">@drawable/arrow_to_back</item>
+        <item name="groupIndicatorIcon">@drawable/radius_button</item>
+        <item name="radius">@drawable/radius2</item>
+        <item name="radius2">@drawable/radius2</item>
+        <item name="add">@drawable/add_icon</item>
+        <item name="contact">@drawable/items</item>
+        <item name="redo">@drawable/icon_redo</item>
+        <item name="user">@drawable/user_icon</item>
+        <item name="settings">@drawable/settings_icon</item>
+        <item name="array2">@drawable/right_arroy</item>
     </style>
 </resources>

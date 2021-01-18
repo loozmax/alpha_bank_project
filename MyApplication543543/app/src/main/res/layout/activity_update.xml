@@ -12,13 +12,13 @@
         android:orientation="horizontal"
         android:padding="12dp"
         android:gravity="center_horizontal"
-        android:background="@drawable/toolbar_style">
+        android:background="@color/colorBackground">
 
         <ImageView
             android:id="@+id/arrow_back"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/arrow_to_back" />
+            android:src="?attr/actionRefreshIcon" />
 
         <TextView
             android:layout_width="0dp"

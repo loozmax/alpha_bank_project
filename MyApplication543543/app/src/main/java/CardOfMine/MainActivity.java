@@ -287,7 +287,7 @@ public class MainActivity extends AppCompatActivity implements
     public void showUsersForshareCutaway(UserData userData) {
         userListAdapter.setUserData(userData);
         tvCutawayDescription.setText(userData.getUserName());
-        tvCutawayDescription.setText("Поделиться визиткой '"+userData.getUserName()+"' c пользователем:");
+        tvCutawayDescription.setText("        Поделиться визиткой «" + userData.getUserAppeal() + "» c:");
         usersLayout.setVisibility(View.VISIBLE);
 
     }
@@ -307,8 +307,10 @@ public class MainActivity extends AppCompatActivity implements
                     case 0: {
                         Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION);
                         intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
-                        intent .putExtra(ContactsContract.Intents.Insert.PHONE, userData.userPhone);
-                        intent .putExtra(ContactsContract.Intents.Insert.NAME, userData.userName);
+                        intent .putExtra(ContactsContract.Intents.Insert.PHONE, userData.getUserPhone());
+                        intent .putExtra(ContactsContract.Intents.Insert.NAME, userData.getUserName() + " " + userData.getUserOtchestvo());
+                        intent .putExtra(ContactsContract.Intents.Insert.EMAIL, userData.getUserEmail());
+                        intent .putExtra(ContactsContract.Intents.Insert.COMPANY, userData.getUserOrganisation());
                         startActivity(intent);
                     } break;
 

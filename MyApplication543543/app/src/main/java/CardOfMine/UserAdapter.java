@@ -2,6 +2,7 @@ package CardOfMine;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication543543.R;
 import com.google.firebase.database.DatabaseReference;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -46,9 +48,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
                 .fit()
                 .centerCrop()
                 .into(holder.avatar);
+        if(userData!=null){
+            System.out.println("userData is " + new Gson().toJson(userData));
+        }
 
-        holder.tvName.setText(userData.getUserName());
-        holder.tvDescription.setText(userData.getUserLastName());
+        holder.tvName.setText(userData.getUserAppeal());
+        holder.tvDescription.setText(userData.getUserLastName() + " " + userData.getUserName());
         holder.qrImageView.setOnClickListener((view)->{
             if(userActionInterface!=null)
                 userActionInterface.showQrCode(userData);

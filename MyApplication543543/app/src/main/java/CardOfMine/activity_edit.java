@@ -27,10 +27,13 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import CardAddedByMe.CardActivity;
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class activity_edit extends AppCompatActivity {
 
-    EditText name1, age1, phone1;
-    ImageView profileImageView;
+    EditText name1, age1, phone1, email1;
+    CircleImageView profileImageView;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     FirebaseUser user;
@@ -47,6 +50,14 @@ public class activity_edit extends AppCompatActivity {
         userID = user.getUid();
         storageReference = FirebaseStorage.getInstance().getReference();
 
+        ImageView arrow = (ImageView) findViewById(R.id.arrow_back);
+        arrow.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(view.getContext(), ProfileRedo.class);
+                startActivity(myIntent);
+            }
+        });
+
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         saveBtn = findViewById(R.id.saveProfile);
@@ -54,15 +65,18 @@ public class activity_edit extends AppCompatActivity {
         name1 = findViewById(R.id.profileName);
         age1 = findViewById(R.id.profileAge);
         phone1 = findViewById(R.id.profilePhone);
+        email1 = findViewById(R.id.profileEmail);
 
         Intent data = getIntent();
         String fullName = data.getStringExtra("fullName");
         String age = data.getStringExtra("age");
         String phone = data.getStringExtra("phone");
+        String email = data.getStringExtra("email");
 
         name1.setText(fullName);
         age1.setText(age);
         phone1.setText(phone);
+        email1.setText(email);
 
         profileImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,13 +89,14 @@ public class activity_edit extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String uPhone, uName, uAge;
+                String uPhone, uName, uAge, uEmail;
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userID);
                 uPhone = phone1.getText().toString();
                 uName = name1.getText().toString();
                 uAge = age1.getText().toString();
+                uEmail = email1.getText().toString();
 
-                User user = new User(uName, uAge, "roseheartbeatj@gmail.com", uPhone);
+                User user = new User(uName, uAge, uEmail, uPhone);
                 databaseReference.setValue(user);
 
                 Intent intent = new Intent(activity_edit.this, ProfileRedo.class);

@@ -30,6 +30,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import CardAddedByMe.CardActivity;
+
 
 public class ProfileRedo extends AppCompatActivity {
 
@@ -37,7 +39,7 @@ public class ProfileRedo extends AppCompatActivity {
     private String userID;
     private FirebaseUser user;
     Button change;
-    TextView displayName, displayAge, displayPhone;
+    TextView displayName, displayAge, displayPhone, displayEmail;
     ImageView img;
 
 
@@ -63,6 +65,15 @@ public class ProfileRedo extends AppCompatActivity {
         displayName = findViewById(R.id.displayName);
         displayPhone = findViewById(R.id.displayPhone);
         displayAge = findViewById(R.id.displayAge);
+        displayEmail = findViewById(R.id.displayEmail);
+
+        ImageView arrow = (ImageView) findViewById(R.id.arrow_back);
+        arrow.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(view.getContext(), MainActivity.class);
+                startActivity(myIntent);
+            }
+        });
 
         userID = user.getUid();
 
@@ -74,9 +85,11 @@ public class ProfileRedo extends AppCompatActivity {
                     String fullName = userProfile.fullName;
                     String phone = userProfile.phone;
                     String age = userProfile.age;
+                    String email = userProfile.email;
                     displayName.setText(fullName);
                     displayAge.setText(age);
                     displayPhone.setText(phone);
+                    displayEmail.setText(email);
                 }
             }
 
@@ -93,6 +106,7 @@ public class ProfileRedo extends AppCompatActivity {
                 i.putExtra("fullName", displayName.getText().toString());
                 i.putExtra("phone", displayPhone.getText().toString());
                 i.putExtra("age", displayAge.getText().toString());
+                i.putExtra("email", displayEmail.getText().toString());
                 startActivity(i);
             }
         });

@@ -12,13 +12,13 @@
         android:orientation="horizontal"
         android:padding="12dp"
         android:gravity="center_horizontal"
-        android:background="@drawable/toolbar_style">
+        android:background="@color/colorBackground">
 
         <ImageView
             android:id="@+id/arrow_back"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/arrow_to_back" />
+            android:src="?attr/actionRefreshIcon" />
 
         <TextView
             android:layout_width="0dp"
@@ -27,17 +27,19 @@
             android:gravity="center_horizontal"
             android:text="Добавить карточку"
             android:textAlignment="center"
-            android:textColor="#636363"
+            android:textColor="@color/textColorPrimary"
             android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/uploadImgs"
-            android:src="@drawable/add_icon"
+            android:src="?attr/add"
             android:layout_width="32dp"
             android:layout_height="32dp" />
+
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingRight="15dp"
@@ -48,8 +50,9 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="85dp"
-            android:background="@drawable/radius2"
+            android:background="?attr/radius"
             android:ems="10"
+            android:textColor="@color/textColorPrimary"
             android:hint="Имя"
             android:inputType="textPersonName"
             android:paddingLeft="25dp"
@@ -59,12 +62,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:textColor="@color/textColorPrimary"
             android:id="@+id/author_input"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:paddingLeft="25dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/radius2"
+            android:background="?attr/radius"
             android:ems="10"
             android:hint="Фамилия"
             android:inputType="textPersonName"
@@ -74,12 +78,13 @@
             app:layout_constraintTop_toBottomOf="@+id/title_input" />
 
         <EditText
+            android:textColor="@color/textColorPrimary"
             android:id="@+id/pages_input"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:paddingLeft="25dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/radius2"
+            android:background="?attr/radius"
             android:ems="10"
             android:hint="Отчество"
             android:inputType="textPersonName"
@@ -89,12 +94,13 @@
             app:layout_constraintTop_toBottomOf="@+id/author_input" />
 
         <EditText
+            android:textColor="@color/textColorPrimary"
             android:id="@+id/author_input4"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:paddingLeft="25dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/radius2"
+            android:background="?attr/radius"
             android:ems="10"
             android:hint="Обращение"
             android:inputType="textPersonName"
@@ -104,12 +110,13 @@
             app:layout_constraintTop_toBottomOf="@+id/pages_input" />
 
         <EditText
+            android:textColor="@color/textColorPrimary"
             android:id="@+id/author_input5"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:paddingLeft="25dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/radius2"
+            android:background="?attr/radius"
             android:ems="10"
             android:hint="Организация"
             android:inputType="textPersonName"
@@ -119,12 +126,13 @@
             app:layout_constraintTop_toBottomOf="@+id/author_input4" />
 
         <EditText
+            android:textColor="@color/textColorPrimary"
             android:id="@+id/author_input6"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:paddingLeft="25dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/radius2"
+            android:background="?attr/radius"
             android:ems="10"
             android:hint="Телефон"
             android:inputType="number"
@@ -134,12 +142,13 @@
             app:layout_constraintTop_toBottomOf="@+id/author_input5" />
 
         <EditText
+            android:textColor="@color/textColorPrimary"
             android:id="@+id/author_input7"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:paddingLeft="25dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/radius2"
+            android:background="?attr/radius"
             android:ems="10"
             android:hint="Адрес эл. почты"
             android:inputType="textPersonName"
@@ -149,12 +158,13 @@
             app:layout_constraintTop_toBottomOf="@+id/author_input6" />
 
         <EditText
+            android:textColor="@color/textColorPrimary"
             android:id="@+id/author_input8"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:paddingLeft="25dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/radius2"
+            android:background="?attr/radius"
             android:ems="10"
             android:hint="Адрес"
             android:inputType="textPersonName"
@@ -164,12 +174,13 @@
             app:layout_constraintTop_toBottomOf="@+id/author_input7" />
 
         <EditText
+            android:textColor="@color/textColorPrimary"
             android:id="@+id/author_input9"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:paddingLeft="25dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/radius2"
+            android:background="?attr/radius"
             android:ems="10"
             android:hint="Вконтакте"
             android:inputType="textPersonName"
@@ -179,12 +190,13 @@
             app:layout_constraintTop_toBottomOf="@+id/author_input8" />
 
         <EditText
+            android:textColor="@color/textColorPrimary"
             android:id="@+id/author_input10"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:paddingLeft="25dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/radius2"
+            android:background="?attr/radius"
             android:ems="10"
             android:hint="Facebook"
             android:inputType="textPersonName"
@@ -199,7 +211,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="125dp"
             android:layout_marginLeft="125dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="125dp"
             android:layout_marginRight="125dp"
             android:width="140dp"
@@ -207,11 +219,23 @@
             android:text="Добавить"
             android:textAllCaps="false"
             android:textColor="#fff"
-            android:textSize="20dp"
+            android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/author_input10" />
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/add_button"
+            app:layout_constraintEnd_toEndOf="@+id/author_input5"
+            app:layout_constraintStart_toStartOf="@+id/author_input5"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

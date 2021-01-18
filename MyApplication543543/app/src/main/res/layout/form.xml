@@ -10,7 +10,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/toolbar_style"
+        android:background="@color/colorBackground"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:padding="12dp">
@@ -19,7 +19,7 @@
             android:id="@+id/arrow_back"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/arrow_to_back" />
+            android:src="?attr/actionRefreshIcon" />
 
         <TextView
             android:layout_width="0dp"
@@ -61,8 +61,10 @@
         android:id="@+id/nameInput"
         android:layout_width="1020px"
         android:layout_height="155px"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="216dp"
-        android:background='@drawable/radius'
+        android:background='@drawable/radius2'
         android:ems="10"
         android:hint="Имя"
         android:inputType="textPersonName"
@@ -75,8 +77,10 @@
         android:id="@+id/firstNameText"
         android:layout_width="1020px"
         android:layout_height="155px"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="8dp"
-        android:background='@drawable/radius'
+        android:background='@drawable/radius2'
         android:ems="10"
         android:hint="Фамилия"
         android:inputType="textPersonName"
@@ -89,8 +93,10 @@
         android:id="@+id/lastNameText"
         android:layout_width="1020px"
         android:layout_height="155px"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="8dp"
-        android:background='@drawable/radius'
+        android:background='@drawable/radius2'
         android:ems="10"
         android:hint="Отчество"
         android:inputType="textPersonName"
@@ -103,8 +109,10 @@
         android:id="@+id/editTextTextPersonName1"
         android:layout_width="1020px"
         android:layout_height="155px"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="8dp"
-        android:background='@drawable/radius'
+        android:background='@drawable/radius2'
         android:ems="10"
         android:hint="Обращение"
         android:inputType="textPersonName"
@@ -117,8 +125,10 @@
         android:id="@+id/editTextTextPersonName6"
         android:layout_width="1020px"
         android:layout_height="155px"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="8dp"
-        android:background='@drawable/radius'
+        android:background='@drawable/radius2'
         android:ems="10"
         android:hint="Организация"
         android:inputType="textPersonName"
@@ -131,8 +141,10 @@
         android:id="@+id/editTextTextPersonName7"
         android:layout_width="1020px"
         android:layout_height="155px"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="8dp"
-        android:background='@drawable/radius'
+        android:background='@drawable/radius2'
         android:ems="10"
         android:hint="Телефон"
         android:inputType="number"
@@ -145,8 +157,10 @@
         android:id="@+id/editTextTextPersonName8"
         android:layout_width="1020px"
         android:layout_height="155px"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="8dp"
-        android:background='@drawable/radius'
+        android:background='@drawable/radius2'
         android:ems="10"
         android:hint="Адрес эл. почты"
         android:inputType="textPersonName"
@@ -159,8 +173,10 @@
         android:id="@+id/editTextTextPersonName9"
         android:layout_width="1020px"
         android:layout_height="155px"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="8dp"
-        android:background='@drawable/radius'
+        android:background='@drawable/radius2'
         android:ems="10"
         android:hint="Адрес"
         android:inputType="textPersonName"
@@ -173,14 +189,17 @@
         android:id="@+id/editTextTextPersonName11"
         android:layout_width="1020px"
         android:layout_height="155px"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="58dp"
-        android:background='@drawable/radius'
+        android:background='@drawable/radius2'
         android:ems="10"
         android:hint="Facebook"
         android:inputType="textPersonName"
         android:paddingLeft="50px"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName10" />
 
     <EditText
@@ -188,12 +207,13 @@
         android:layout_width="1020px"
         android:layout_height="155px"
         android:layout_marginTop="8dp"
-        android:background='@drawable/radius'
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:background='@drawable/radius2'
         android:ems="10"
         android:hint="Вконтакте"
         android:inputType="textPersonName"
         android:paddingLeft="50px"
-        android:layout_marginRight="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.727"
         app:layout_constraintStart_toStartOf="parent"
@@ -216,7 +236,7 @@
         android:id="@+id/imageView6"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginBottom="570dp"
+        android:layout_marginBottom="525dp"
         android:background="@drawable/user_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/nameInput"
@@ -227,7 +247,7 @@
         android:id="@+id/imageView7"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginBottom="362dp"
+        android:layout_marginBottom="312dp"
         android:background="@drawable/build_form_pic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName6"
@@ -237,7 +257,7 @@
         android:id="@+id/imageView8"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginBottom="310dp"
+        android:layout_marginBottom="260dp"
         android:background="@drawable/phone_form_pic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName7"
@@ -247,7 +267,7 @@
         android:id="@+id/imageView9"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginBottom="257dp"
+        android:layout_marginBottom="210dp"
         android:background="@drawable/email_form_pic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName8"
@@ -257,7 +277,7 @@
         android:id="@+id/imageView10"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginBottom="205dp"
+        android:layout_marginBottom="157dp"
         android:background="@drawable/geo_form_pic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName9"
@@ -267,7 +287,7 @@
         android:id="@+id/imageView11"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginBottom="152dp"
+        android:layout_marginBottom="102dp"
         android:background="@drawable/vk_form_pic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName10"
@@ -277,7 +297,7 @@
         android:id="@+id/imageView12"
         android:layout_width="29dp"
         android:layout_height="29dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/facebok_form_pic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName11"
@@ -287,8 +307,8 @@
         android:id="@+id/imageButton"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="174dp"
-        android:layout_marginLeft="174dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginLeft="200dp"
         android:layout_marginTop="42dp"
         android:layout_marginEnd="197dp"
         android:layout_marginRight="197dp"
@@ -299,5 +319,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         tools:ignore="MissingConstraints" />
+
+    <ProgressBar
+        android:id="@+id/progressBar3"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

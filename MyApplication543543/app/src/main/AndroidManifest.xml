@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication543543">
-        <activity android:name="CardOfMine.activity_edit"></activity>
+        <activity android:name="CardAddedByMe.redo_card_added_by_me"></activity>
+        <activity android:name="CardOfMine.activity_edit" />
         <activity android:name="CardOfMine.ProfileRedo" />
         <activity android:name=".Login">
             <intent-filter>

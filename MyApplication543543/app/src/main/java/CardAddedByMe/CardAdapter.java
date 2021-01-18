@@ -1,7 +1,6 @@
 package CardAddedByMe;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +31,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     public CardAdapter(Context c, ArrayList<CardData> cardData,ConfirmListenerInterface confirmListenerInterface) {
         this.context = c;
         this.cardData = cardData;
-        this.confirmListenerInterface=confirmListenerInterface;
+        this.confirmListenerInterface = confirmListenerInterface;
     }
 
     @NonNull
@@ -50,14 +49,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull CardAdapter.MyViewHolder holder, int position) {
         CardData userData = this.cardData.get(position);
-        Picasso.get()
-                .load(userData.getmImageUrl())
-                .fit()
-                .centerCrop()
-                .into(holder.avatar);
 
-        holder.tvName.setText(userData.getUserName());
-        holder.tvDescription.setText(userData.getUserLastName());
+        holder.tvName.setText(userData.getUserLastName() +" " + userData.getUserName());
+        holder.tvDescription.setText(userData.getUserAppeal());
         if(userData.isFavorite()) {
             holder.imgFavorite.setVisibility(View.VISIBLE);
             //holder.infolayout.setVisibility(View.VISIBLE);
@@ -92,19 +86,25 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
                 holder.infolayout.setVisibility(View.GONE);
                 holder.right_arrow.setRotation(90);
             }
-
         });
 
+//        holder.addrrr.setText(userData.getUserAddress());
         holder.organization.setText(userData.userOrganisation);
         holder.phoneNumb.setText(userData.userPhone);
         holder.emailAdrr.setText(userData.userEmail);
-        holder.addrrr.setText(userData.getUserAddress());
+
         holder.vk_profile.setOnClickListener((v -> {
             if(confirmListenerInterface!=null) confirmListenerInterface.openLink(userData.userVK);
         }));
         holder.fcb_profile.setOnClickListener((v -> {
             if(confirmListenerInterface!=null) confirmListenerInterface.openLink(userData.userFB);
         }));
+
+        Picasso.get()
+                .load(userData.getmImageUrl())
+                .fit()
+                .centerCrop()
+                .into(holder.imgCard);
     }
 
     @Override
@@ -113,33 +113,31 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName, tvDescription,tvDelete,tvConfirm;
+        TextView tvName, tvDescription, tvDelete,tvConfirm;
         LinearLayout neetToConfirmLayout;
         ConstraintLayout rooLayout;
-        ImageView imgFavorite,right_arrow;
+        ImageView imgFavorite,right_arrow,imgCard;
         ConstraintLayout infolayout;
-        EditText organization,phoneNumb,emailAdrr,addrrr;
+        EditText organization,phoneNumb,emailAdrr;
         Button vk_profile,fcb_profile;
-        ImageView avatar;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvName = itemView.findViewById(R.id.title);
+            tvName = itemView.findViewById(R.id.description);
             infolayout= itemView.findViewById(R.id.infolayout);
             neetToConfirmLayout=itemView.findViewById(R.id.neetToConfirmLayout);
             rooLayout=itemView.findViewById(R.id.rootLayout);
-            tvDescription = itemView.findViewById(R.id.description);
+            tvDescription = itemView.findViewById(R.id.title);
             tvDelete = itemView.findViewById(R.id.tvDelete);
             tvConfirm = itemView.findViewById(R.id.tvConfirm);
             imgFavorite= itemView.findViewById(R.id.imgFavorite);
             right_arrow= itemView.findViewById(R.id.right_arrow);
             organization= itemView.findViewById(R.id.organization);
             phoneNumb= itemView.findViewById(R.id.phoneNumb);
-            emailAdrr= itemView.findViewById(R.id.emailAdrr);
-            addrrr= itemView.findViewById(R.id.addrrr);
+            emailAdrr = itemView.findViewById(R.id.emailAdrr);
+//            addrrr = itemView.findViewById(R.id.addrrr);
             vk_profile= itemView.findViewById(R.id.vk_profile);
             fcb_profile= itemView.findViewById(R.id.fcb_profile);
-            avatar = itemView.findViewById(R.id.imageCard);
-
+            imgCard = itemView.findViewById(R.id.imageCard);
         }
     }
 

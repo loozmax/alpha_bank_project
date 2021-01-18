@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">My Application543543</string>
-
+    <string name="app_name"></string>
     <string name="my_text"><u>Забыли пароль?</u>.</string>
 </resources>

@@ -13,10 +13,12 @@
         android:id="@+id/rootLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/radius"
+        android:background="?attr/radius"
         android:clipToPadding="true">
 
         <ImageView
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
             android:id="@+id/imageCard"
             android:layout_width="64dp"
             android:layout_height="64dp"
@@ -34,7 +36,7 @@
             android:layout_marginLeft="14dp"
             android:layout_marginTop="10dp"
             android:text="Description"
-            android:textColor="#000000"
+            android:textColor="@color/textColorPrimary"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageCard"
@@ -48,7 +50,7 @@
             android:layout_marginLeft="14dp"
             android:layout_marginBottom="5dp"
             android:text="Title"
-            android:textColor="#000000"
+            android:textColor="@color/textColorPrimary"
             android:textSize="19sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageCard"
@@ -59,30 +61,27 @@
             android:id="@+id/neetToConfirmLayout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="40dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@+id/description"
             app:layout_constraintEnd_toStartOf="@+id/right_arrow"
-            app:layout_constraintTop_toTopOf="@+id/description">
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="С вами поделились визиткой"
-                android:textColor="#201717"
-                android:textStyle="bold" />
+            app:layout_constraintStart_toEndOf="@+id/title"
+            app:layout_constraintTop_toTopOf="@+id/description"
+            app:layout_constraintVertical_bias="0.782">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
 
                 <TextView
                     android:id="@+id/tvDelete"
-                    android:layout_width="match_parent"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#FB3A3A"
@@ -93,7 +92,7 @@
 
                 <TextView
                     android:id="@+id/tvConfirm"
-                    android:layout_width="match_parent"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#4CAF50"
@@ -126,7 +125,7 @@
             android:rotation="90"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/right_arroy" />
+            app:srcCompat="?attr/array2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -193,24 +192,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phoneNumb" />
 
-        <EditText
-            android:id="@+id/addrrr"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/radius2"
-            android:editable="false"
-            android:ems="10"
-            android:hint="Адрес"
-            android:inputType="textPersonName"
-            android:paddingLeft="25dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailAdrr" />
+<!--        <EditText-->
+<!--            android:id="@+id/addrrr"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_marginStart="50dp"-->
+<!--            android:layout_marginLeft="50dp"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:layout_marginEnd="20dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:background="@drawable/radius2"-->
+<!--            android:editable="false"-->
+<!--            android:ems="10"-->
+<!--            android:hint="Адрес"-->
+<!--            android:inputType="textPersonName"-->
+<!--            android:paddingLeft="25dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/emailAdrr" />-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout3"
@@ -237,7 +236,7 @@
         <Button
             android:id="@+id/vk_profile"
             android:layout_width="320dp"
-            android:layout_height="55dp"
+            android:layout_height="48dp"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="12dp"
@@ -254,12 +253,12 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addrrr" />
+            app:layout_constraintTop_toBottomOf="@+id/emailAdrr" />
 
         <Button
             android:id="@+id/fcb_profile"
             android:layout_width="320dp"
-            android:layout_height="55dp"
+            android:layout_height="48dp"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="12dp"
@@ -310,37 +309,37 @@
             android:layout_height="24dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
-            android:layout_marginTop="31dp"
+            android:layout_marginTop="33dp"
             app:layout_constraintEnd_toStartOf="@+id/emailAdrr"
             app:layout_constraintHorizontal_bias="0.478"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView14"
             app:srcCompat="@drawable/email_form_pic" />
 
-        <ImageView
-            android:id="@+id/imageView16"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="2dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="32dp"
-            app:layout_constraintEnd_toStartOf="@+id/addrrr"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView15"
-            app:srcCompat="@drawable/geo_form_pic" />
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView16"-->
+<!--            android:layout_width="24dp"-->
+<!--            android:layout_height="24dp"-->
+<!--            android:layout_marginStart="2dp"-->
+<!--            android:layout_marginLeft="2dp"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/addrrr"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/imageView15"-->
+<!--            app:srcCompat="@drawable/geo_form_pic" />-->
 
         <ImageView
             android:id="@+id/imageView17"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
             android:layout_marginStart="2dp"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="110dp"
+            android:layout_marginTop="93dp"
             android:layout_marginEnd="1dp"
             android:layout_marginRight="1dp"
             app:layout_constraintEnd_toStartOf="@+id/fcb_profile"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView16"
+            app:layout_constraintTop_toBottomOf="@+id/imageView15"
             app:srcCompat="@drawable/facebok_form_pic" />
 
         <ImageView
@@ -349,10 +348,10 @@
             android:layout_height="24dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="37dp"
             app:layout_constraintEnd_toStartOf="@+id/vk_profile"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView16"
+            app:layout_constraintTop_toBottomOf="@+id/imageView15"
             app:srcCompat="@drawable/vk_form_pic" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

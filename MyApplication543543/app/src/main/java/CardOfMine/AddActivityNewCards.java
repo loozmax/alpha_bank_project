@@ -9,6 +9,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -38,9 +39,10 @@ public class AddActivityNewCards extends AppCompatActivity {
     DatabaseReference mDatabaseRef;
     StorageReference storageReference;
     ImageView uploadImgs;
-    private Uri mImageUri;
+    Uri downloadUri;
+    private Uri mImageUri=null;
     private StorageTask mUploadTask;
-
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +58,7 @@ public class AddActivityNewCards extends AppCompatActivity {
 
         storageReference = FirebaseStorage.getInstance().getReference();
         uploadImgs = findViewById(R.id.uploadImgs);
+        progressBar= findViewById(R.id.progressBar2);
         title_input = findViewById(R.id.author_input);
         author_input = findViewById(R.id.title_input);
         pages_input = findViewById(R.id.pages_input);
@@ -87,14 +90,10 @@ public class AddActivityNewCards extends AppCompatActivity {
                 userVK = vk_input.getText().toString();
                 userFB = fb_input.getText().toString();
 
-                UserData userData = new UserData(null, delete, userId, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userAdres, userEmail, userVK, userFB);
+                UserData userData = new UserData((downloadUri!=null)?downloadUri.toString():null, delete, userId, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userAdres, userEmail, userVK, userFB);
                 database.child(delete).setValue(userData);
 
-                if (mUploadTask != null && mUploadTask.isInProgress()) {
-                    //TODO
-                } else {
-                    uploadFile();
-                }
+
 
                 Intent intent = new Intent(AddActivityNewCards.this, MainActivity.class);
                 v.getContext().startActivity(intent);
@@ -126,6 +125,11 @@ public class AddActivityNewCards extends AppCompatActivity {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             mImageUri = data.getData();
             Picasso.get().load(mImageUri).into(uploadImgs);
+            if (mUploadTask != null && mUploadTask.isInProgress()) {
+                //TODO
+            } else {
+                uploadFile();
+            }
         }
     }
 
@@ -136,8 +140,10 @@ public class AddActivityNewCards extends AppCompatActivity {
     }
 
     private void uploadFile() {
+
         if (mImageUri != null)
         {
+            progressBar.setVisibility(View.VISIBLE);
             storageReference.putFile(mImageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>()
             {
                 @Override
@@ -156,9 +162,11 @@ public class AddActivityNewCards extends AppCompatActivity {
                 {
                     if (task.isSuccessful())
                     {
-                        Uri downloadUri = task.getResult();
-                        UserData upload = new UserData(downloadUri.toString(), null, null, null, null, null, null, null, null, null, null, null, null);
-                        mDatabaseRef.push().setValue(upload);
+                        progressBar.setVisibility(View.GONE);
+                        System.out.println("onComplete" + task.getResult());
+                         downloadUri = task.getResult();
+                       //UserData upload = new UserData(downloadUri.toString(), null, null, null, null, null, null, null, null, null, null, null, null);
+                       //mDatabaseRef.push().setValue(upload);
                     }
                 }
             });

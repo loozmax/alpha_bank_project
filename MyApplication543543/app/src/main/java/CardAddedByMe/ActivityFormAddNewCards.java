@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +20,6 @@ import androidx.annotation.Nullable;
 import com.example.myapplication543543.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -39,12 +40,12 @@ public class ActivityFormAddNewCards extends Activity {
     Button add_button;
     ImageView imageButton;
     DatabaseReference database;
-
+    Uri downloadUri;
     DatabaseReference mDatabaseRef;
     StorageReference storageReference;
     private Uri mImageUri;
     private StorageTask mUploadTask;
-
+    ProgressBar progressBar;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +61,7 @@ public class ActivityFormAddNewCards extends Activity {
 
         imageButton = findViewById(R.id.imageButton);
         title_input = findViewById(R.id.nameInput);
+        progressBar= findViewById(R.id.progressBar3);
         author_input = findViewById(R.id.firstNameText);
         pages_input = findViewById(R.id.lastNameText);
         appeal_input = findViewById(R.id.editTextTextPersonName1);
@@ -89,14 +91,10 @@ public class ActivityFormAddNewCards extends Activity {
                 userVK = vk_input.getText().toString();
                 userFB = fb_input.getText().toString();
 
-                if (mUploadTask != null && mUploadTask.isInProgress()) {
-                    //TODO
-                } else {
-                    uploadFile();
-                }
-
-                UserData userData = new UserData(null, delete, userId, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userAdres, userEmail, userVK, userFB);
+                UserData userData = new UserData((downloadUri!=null)?downloadUri.toString():null, delete, userId, userName, userLastName, userOtchestvo, userAppeal, userOrganisation, userPhone, userAdres, userEmail, userVK, userFB);
                 database.child(delete).setValue(userData);
+                Intent intent = new Intent(ActivityFormAddNewCards.this, CardActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -109,9 +107,11 @@ public class ActivityFormAddNewCards extends Activity {
                 openFileChooser();
             }
         });
+
     }
 
     private void openFileChooser() {
+
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -125,6 +125,11 @@ public class ActivityFormAddNewCards extends Activity {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             mImageUri = data.getData();
             Picasso.get().load(mImageUri).into(imageButton);
+            if (mUploadTask != null && mUploadTask.isInProgress()) {
+                //TODO
+            } else {
+                uploadFile();
+            }
         }
     }
 
@@ -135,30 +140,23 @@ public class ActivityFormAddNewCards extends Activity {
     }
 
     private void uploadFile() {
-        if (mImageUri != null)
-        {
-            storageReference.putFile(mImageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>()
-            {
+        if (mImageUri != null) {
+            progressBar.setVisibility(View.VISIBLE);
+            storageReference.putFile(mImageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
-                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception
-                {
-                    if (!task.isSuccessful())
-                    {
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if (!task.isSuccessful()) {
                         throw task.getException();
                     }
                     return storageReference.getDownloadUrl();
                 }
-            }).addOnCompleteListener(new OnCompleteListener<Uri>()
-            {
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                 @Override
-                public void onComplete(@NonNull Task<Uri> task)
-                {
-                    if (task.isSuccessful())
-                    {
-                        Uri downloadUri = task.getResult();
-                        UserData upload = new UserData(downloadUri.toString(), null, null, null, null, null, null, null, null, null, null, null, null);
-                        mDatabaseRef.push().setValue(upload);
-                    }
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+                         downloadUri = task.getResult();
+                         progressBar.setVisibility(View.GONE);
+                       }
                 }
             });
         }

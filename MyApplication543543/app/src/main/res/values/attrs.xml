@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="customAttrs">
+        <attr name="actionSearchIcon" format="reference" />
+        <attr name="actionAcceptIcon" format="reference" />
+        <attr name="actionRefreshIcon" format="reference" />
+        <attr name="groupIndicatorIcon" format="reference" />
+        <attr name="radius" format="reference" />
+        <attr name="add" format="reference" />
+        <attr name="radius2" format="reference" />
+        <attr name="contact" format="reference" />
+        <attr name="redo" format="reference" />
+        <attr name="user" format="reference" />
+        <attr name="settings" format="reference" />
+        <attr name="array2" format="reference" />
+    </declare-styleable>
+</resources>

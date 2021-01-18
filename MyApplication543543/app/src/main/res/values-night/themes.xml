@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.MyApplication543543" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.MyApplication543543" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,5 +12,22 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+
+        <item name="actionSearchIcon">@drawable/night</item>
+        <item name="actionAcceptIcon">@drawable/app_info</item>
+        <item name="actionRefreshIcon">@drawable/arrow_light</item>
+        <item name="groupIndicatorIcon">@drawable/radius_button</item>
+        <item name="radius">@drawable/radius_night</item>
+        <item name="add">@drawable/add_light</item>
+        <item name="radius2">@drawable/radius2_night</item>
+
+        <item name="contact">@drawable/add_contact_light</item>
+        <item name="redo">@drawable/redo_light</item>
+        <item name="settings">@drawable/setting_light</item>
+        <item name="user">@drawable/user_light</item>
+        <item name="array2">@drawable/arrr</item>
     </style>
 </resources>

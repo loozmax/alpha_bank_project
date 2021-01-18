@@ -15,19 +15,21 @@
         android:orientation="vertical">
 
         <LinearLayout
+
+            android:id="@+id/toolbar"
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="12dp"
             android:gravity="center_horizontal"
-            android:background="@drawable/toolbar_style">
+            android:background="@color/colorBackground">
 
             <ImageView
                 android:id="@+id/arrow_back"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:src="@drawable/arrow_to_back" />
+                android:src="?attr/actionRefreshIcon" />
 
             <TextView
                 android:layout_width="0dp"
@@ -36,7 +38,7 @@
                 android:text="Настройки"
                 android:textSize="20sp"
                 android:textAlignment="center"
-                android:textColor="#636363"
+                android:textColor="@color/textColorPrimary"
                 android:gravity="center_horizontal" />
 
             <ImageView
@@ -52,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="50dp"
-        android:background="@color/white" >
+        android:background="@color/colorBackground" >
 
         <TextView
             android:id="@+id/textView"
@@ -61,7 +63,7 @@
             android:layout_marginTop="32dp"
             android:text="Ночная тема"
             android:textSize="20dp"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.262"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,9 +91,10 @@
             app:layout_constraintEnd_toStartOf="@+id/textView2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView5"
-            app:srcCompat="@drawable/info" />
+            app:srcCompat="?attr/actionAcceptIcon" />
 
         <ImageView
+
             android:id="@+id/imageView5"
             android:layout_width="32dp"
             android:layout_height="32dp"
@@ -99,9 +102,9 @@
             app:layout_constraintEnd_toStartOf="@+id/textView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/night_theme" />
+            app:srcCompat="?attr/actionSearchIcon"/>
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switch1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -118,7 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/radius_button"
+            android:background="?attr/groupIndicatorIcon"
             android:paddingLeft="35dp"
             android:paddingRight="35dp"
             android:text="Выйти"
